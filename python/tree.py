@@ -1,10 +1,26 @@
-print('hello world')
+""" Node is defined as
+class node:
+  def __init__(self, data):
+      self.data = data
+      self.left = None
+      self.right = None
+"""
 
-def check_binary_search_tree(root):
-  if root.left == None and root.right == None
-    return True
-  
-  if root.left and check_binary_search_tree(root.left)
+def left(root, parent_data):
+    if root == None:
+        return True
+    if root.data >= parent_data:
+        return False
+    return left(root.left, root.data) and left(root.left, parent_data) \
+        and left(root.right, parent_data) and right(root.right, root.data)
 
+def right(root, parent_data):
+    if root == None:
+        return True
+    if root.data <= parent_data:
+        return False
+    return right(root.right, root.data) and right(root.right, parent_data) \
+        and right(root.left, parent_data) and left(root.left, root.data)
 
-check_binary_search_tree()
+def check_binary_search_tree_(root):
+    return left(root.left, root.data) and right(root.right, root.data)
