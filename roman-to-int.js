@@ -9,18 +9,19 @@ const romanToInt = (s) => {
     I: 1,
   };
   let res = 0;
-  let mod = 0;
+  let modifier = 0;
   
   for (let i = 0; i < s.length - 1; i++) {
-    if (map[s[i]] >= map[s[i + 1]]) {
-      res += map[s[i]] - mod;
-      mod = 0;
+    if (map[s[i]] < map[s[i + 1]]) {
+      // s[i] will modify the next char
+      modifier = map[s[i]];
     } else {
-      // s[i] is modifying the next char
-      mod = map[s[i]];
+      // not a modifier, add value + any modifier
+      res += map[s[i]] - modifier;
+      modifier = 0;
     }
   }
-  res += map[s[s.length - 1]] - mod;
+  res += map[s[s.length - 1]] - modifier;
   return res;
 };
 
