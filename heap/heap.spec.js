@@ -44,4 +44,9 @@ describe('MinHeap', () => {
       minHeap.remove();
     }).toThrow(new Error('Empty heap'));
   });
+  test('can remove element', () => {
+    const minHeap = new MinHeap(1);
+    minHeap.remove();
+    expect(minHeap.elements).toEqual([]);
+  });
 });
