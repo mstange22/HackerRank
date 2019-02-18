@@ -53,7 +53,11 @@ export class MinHeap {
   remove() {
     if (this.elements.length === 0) throw new Error('Empty heap');
     const item = this.elements[0];
-    this.elements[0] = this.elements.pop();
+    if (this.elements.length === 1) {
+      this.elements.pop();
+    } else {
+      this.elements[0] = this.elements.pop();
+    }
     this.bubbleDown();
     return item;
   }
