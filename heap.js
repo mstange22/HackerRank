@@ -27,8 +27,10 @@ class MinHeap {
   remove() {
     if (this.heap.length < 1) return null;
     const res = this.heap[0];
-    if (this.heap.length > 0) {
+    if (this.heap.length > 1) {
       this.heap[0] = this.heap.pop();
+    } else {
+      this.heap.pop();
     }
     if (this.heap.length > 1) this.bubbleDown();
     return res;
