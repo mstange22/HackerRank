@@ -1,25 +1,14 @@
 const isBalanced = (s) => {
+  const bMap = { '[': ']', '{': '}', '(': ')' };
   const stack = [];
-  for (let i = 0; i < s.length; i++) {
-    if (s[i] === '{') stack.push('{');
-    else if (s[i] === '[') stack.push('[');
-    else if (s[i] === '(') stack.push('(');
-    else if (s[i] === '}') {
-      if (stack[length-1] !== '{') return 'NO';
-      stack.pop();
-    } else if (s[i] === ']') {
-      if (stack[-1] !== '[') return 'NO';
-      stack.pop();
-    } else if (s[i] === ')') {
-      if (stack[-1] !== '(') return 'NO';
-      stack.pop();
+  for (const c of s) {
+    if (bMap[c]) stack.push(bMap[c]);
+    else if (Object.values(bMap).includes(c)) {
+      if (stack.pop() !== c) return 'NO';
     }
   }
-
-  if (stack.length === 0) {
-    return 'YES';
-  }
-  return 'NO';
+  return stack.length === 0 ? 'YES' : 'NO';
 };
 
 console.log(isBalanced('{[()]}'));
+console.log(isBalanced('{[(})]}'));
