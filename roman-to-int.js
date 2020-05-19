@@ -21,8 +21,7 @@ const romanToInt = (s) => {
       modifier = 0;
     }
   }
-  res += map[s[s.length - 1]] - modifier;
-  return res;
+  return res + map[s[s.length - 1]] - modifier;
 };
 
 console.log(romanToInt('MCMXCIV'));
